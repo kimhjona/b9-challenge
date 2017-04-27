@@ -1,17 +1,21 @@
 <template>
-  <!--<addJob @click.native="clickJob" v-if="add"></addJob>-->
-  <createTask v-else></createTask> 
+  <div>
+    <ul style='list-style-type: none;'>
+      <li v-for='n in list'>
+        <createTask></createTask>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
 import createTask from './createTask';
-// import addJob from './addJob';
 
 export default {
   name: 'Create',
   data() {
     return {
-      // add: true,
+      list: 1,
     };
   },
   methods: {
@@ -23,7 +27,6 @@ export default {
     },
   },
   components: {
-    // addJob,
     createTask,
   },
 };

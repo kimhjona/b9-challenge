@@ -97,7 +97,7 @@
         <input type="submit" v-if='!submitted' @click='submit' class="saveButton" value="Save">
         <input type="submit" v-else class="editButton" value="Edit" @click='back'>
         <a class='cancelButton' v-if='!submitted && !alreadySubmitted' @click="jobRemovefn">Cancel</a>
-        <a class='cancelButton' v-else-if='alreadySubmitted' @click="cancel">Cancel</a>
+        <a class='cancelButton' v-else-if='!submitted && alreadySubmitted' @click="submit">Cancel</a>
         <a class='cancelButton' v-else @click='remove'>Remove</a>
         <Remove v-show='blackBackground'></Remove>
       </div>
@@ -132,30 +132,33 @@
     methods: {
       submit() {
         if (!this.inputText) return;
+        if (!this.alreadySubmitted) {
+          this.$parent.list += 1;
+          this.$parent.$parent.keepHelloAlive += 1;
+        }
+        this.alreadySubmitted = 1;
         this.submitted = 1;
-        // this.alreadySubmitted = 1;
+        if (this.$parent.list === 1) this.hello();
       },
-      // click() {
-      //   console.log(this.$parent);
-      //   // this.$parent.add = 1;
+      // hello() {
+      //   console.log('one list item!');
       // },
       cancel() {
-        this.submitted = 1;
+        this.submitted = 0;
       },
       jobAddfn() {
-        console.log('job add!');
         this.jobAdded = 1;
       },
       jobRemovefn() {
-        console.log('job add!');
         this.jobAdded = 0;
       },
       back() {
         this.submitted = 0;
       },
       remove() {
-        console.log('remove!');
         this.blackBackground = 1;
+        // this.$parent.list -= 1;
+        // if (this.$parent.list === 1) this.hello();
       },
       getToday() {
         const today = new Date();

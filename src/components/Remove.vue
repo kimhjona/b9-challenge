@@ -22,6 +22,7 @@
         // console.log('hi');
         // console.log(this.$parent.goneForever);
         this.$parent.goneForever = 0;
+        console.log(this.$parent.$parent.$parent.keepHelloAlive -= 1);
       },
     },
     data() {

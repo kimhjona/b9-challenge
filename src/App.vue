@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <hello></hello>
-    <!--<Created></Created>-->
+    <hello v-if='keepHelloAlive === 1'></hello>
     <br>
     <Create></Create>
   </div>
@@ -10,21 +9,19 @@
 <script>
 import Hello from './components/Hello';
 import Create from './components/Create';
-// import Created from './components/Created';
 
 export default {
   name: 'app',
   data() {
     return {
+      keepHelloAlive: 1,
     };
   },
   methods: {
-
   },
   components: {
     Hello,
     Create,
-    // Created,
   },
   created() {
   },
