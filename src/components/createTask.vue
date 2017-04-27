@@ -108,6 +108,7 @@
 <script>
   import Remove from './Remove';
   import addJob from './addJob';
+  // import axios from 'axios';
 
   export default {
     name: 'createTask',
@@ -139,10 +140,15 @@
         this.alreadySubmitted = 1;
         this.submitted = 1;
         if (this.$parent.list === 1) this.hello();
+
+        // axios.post('/destination', {
+        //   date: this.date,
+        //   inputText: this.inputText,
+        //   dynoSize: this.dynoSize,
+        //   frequency: this.frequency,
+        //   nextDue: this.nextDue,
+        // });
       },
-      // hello() {
-      //   console.log('one list item!');
-      // },
       cancel() {
         this.submitted = 0;
       },
@@ -157,8 +163,6 @@
       },
       remove() {
         this.blackBackground = 1;
-        // this.$parent.list -= 1;
-        // if (this.$parent.list === 1) this.hello();
       },
       getToday() {
         const today = new Date();

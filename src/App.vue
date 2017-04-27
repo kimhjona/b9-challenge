@@ -23,8 +23,6 @@ export default {
     Hello,
     Create,
   },
-  created() {
-  },
 };
 </script>
 
